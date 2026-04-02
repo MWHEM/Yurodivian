@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Yurodivian</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV + HERO wrapper -->
+  <div class="hero-wrapper">
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-brand">
+        <img src="assets/logo.png" alt="Logo" class="nav-logo" />
+        <span>The Yurodivian</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#soul-path">Soul Path</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#updates">Updates</a></li>
+        <li><a href="#meetings">Meetings</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="soul-path">
+      <img src="assets/logo.png" alt="Soul Path Logo" class="hero-logo" />
+      <a href="#" class="btn-start">Start Here</a>
+    </section>
+
+  </div>
+
+  <!-- BOOK SECTION -->
+  <section class="books">
+    <h2>Soul Path</h2>
+    <div class="book-carousel">
+      <button class="carousel-btn carousel-prev" aria-label="Previous">&#8592;</button>
+      <div class="carousel-track-wrapper">
+        <div class="carousel-track">
+          <div class="carousel-item active" data-index="0">
+            <img src="assets/book1.webp" alt="Book 1 Cover" />
+            <a href="#" class="btn-download">Download Free</a>
+          </div>
+          <div class="carousel-item" data-index="1">
+            <div class="book-placeholder"><span>Book 2</span></div>
+            <p class="coming-soon-label">Coming Soon</p>
+          </div>
+          <div class="carousel-item" data-index="2">
+            <div class="book-placeholder"><span>Book 3</span></div>
+            <p class="coming-soon-label">Coming Soon</p>
+          </div>
+          <div class="carousel-item" data-index="3">
+            <div class="book-placeholder"><span>Book 4</span></div>
+            <p class="coming-soon-label">Coming Soon</p>
+          </div>
+          <div class="carousel-item" data-index="4">
+            <div class="book-placeholder"><span>Book 5</span></div>
+            <p class="coming-soon-label">Coming Soon</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-next" aria-label="Next">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto">
+    <p>No, there's no catch.</p>
+    <p>Yes, it's free.</p>
+    <p>No, it's not an upsell to something else.</p>
+    <p>Yes, you can have it <strong>all</strong> if you work for it.</p>
+    <p class="spacer">I'm indifferent if you don't do it, I am happy if you choose freedom.</p>
+    <p class="quote">"The Nature of The All is To Give To Receive To Give More."</p>
+  </section>
+
+  <script>
+    const track = document.querySelector('.carousel-track');
+    const items = Array.from(document.querySelectorAll('.carousel-item'));
+    const itemWidth = 225 + 32;
+    let current = 0;
+
+    function goTo(index) {
+      items[current].classList.remove('active');
+      current = (index + items.length) % items.length;
+      items[current].classList.add('active');
+      track.style.transform = `translateX(${-current * itemWidth}px)`;
+    }
+
+    document.querySelector('.carousel-prev').addEventListener('click', () => goTo(current - 1));
+    document.querySelector('.carousel-next').addEventListener('click', () => goTo(current + 1));
+    items.forEach((item, i) => item.addEventListener('click', () => { if (i !== current) goTo(i); }));
+
+    goTo(0);
+  </script>
+
+</body>
+</html>
