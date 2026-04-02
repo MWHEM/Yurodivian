@@ -2640,6 +2640,8 @@ footer {
 
   .slider-mobile-btn {
     display: inline-block;
+    width: 90px;
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.78rem;
     font-weight: 600;
@@ -2649,7 +2651,7 @@ footer {
     background: transparent;
     border: 1px solid rgba(200, 184, 122, 0.35);
     border-radius: 6px;
-    padding: 8px 16px;
+    padding: 8px 0;
     cursor: pointer;
     transition: background 0.2s, border-color 0.2s;
   }
