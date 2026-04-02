@@ -2430,7 +2430,7 @@ footer {
 .slider-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 28px;
   padding: 0 16px;
 }
@@ -2631,6 +2631,10 @@ footer {
 
   .book-card-meta {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .slider-nav {
+    justify-content: space-between;
   }
 
   .slider-arrow--next,
