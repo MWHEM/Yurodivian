@@ -249,25 +249,37 @@
 
     // Touch drag support
     let touchStartX = 0;
+    let touchStartY = 0;
     let touchDeltaX = 0;
+    let isDragging = false;
 
     sliderTrack.addEventListener('touchstart', function (e) {
       touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
       touchDeltaX = 0;
-      sliderTrack.style.transition = 'none';
+      isDragging = false;
     }, { passive: true });
 
     sliderTrack.addEventListener('touchmove', function (e) {
-      touchDeltaX = e.touches[0].clientX - touchStartX;
-      sliderTrack.style.transform = `translateX(calc(${-currentSlide * 100}% + ${touchDeltaX}px))`;
+      const dx = e.touches[0].clientX - touchStartX;
+      const dy = e.touches[0].clientY - touchStartY;
+      // Only engage if horizontal movement is intentional and dominant
+      if (!isDragging && (Math.abs(dx) < 12 || Math.abs(dy) > Math.abs(dx))) return;
+      isDragging = true;
+      touchDeltaX = dx;
+      sliderTrack.style.transition = 'none';
+      // Apply resistance — drag feels heavier, not 1:1
+      sliderTrack.style.transform = `translateX(calc(${-currentSlide * 100}% + ${touchDeltaX * 0.6}px))`;
     }, { passive: true });
 
     sliderTrack.addEventListener('touchend', function () {
       sliderTrack.style.transition = '';
-      const threshold = sliderTrack.offsetWidth * 0.2;
+      if (!isDragging) return;
+      const threshold = sliderTrack.offsetWidth * 0.3;
       if (touchDeltaX < -threshold) goToSlide(currentSlide + 1);
       else if (touchDeltaX > threshold) goToSlide(currentSlide - 1);
       else goToSlide(currentSlide);
+      isDragging = false;
     });
   </script>
 
