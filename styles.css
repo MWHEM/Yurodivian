@@ -2415,3 +2415,237 @@ footer {
 .resource-btn {
   flex-shrink: 0;
 }
+
+/* =============================================
+   RESPONSIVE STYLES
+   ============================================= */
+
+/* Hamburger hidden on desktop */
+.nav-hamburger {
+  display: none;
+}
+
+/* ── 768px and below ── */
+@media (max-width: 768px) {
+
+  /* NAV */
+  nav {
+    padding: 14px 20px;
+    position: relative;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #4a5568;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+
+  .nav-hamburger.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-hamburger.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-right {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #0a1030;
+    border-top: 1px solid rgba(200, 184, 122, 0.2);
+    border-bottom: 1px solid rgba(200, 184, 122, 0.12);
+    padding: 8px 0 20px;
+    z-index: 300;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-right.is-open {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+  }
+
+  .nav-dropdown {
+    border-bottom: 1px solid rgba(200, 184, 122, 0.07);
+  }
+
+  .nav-dropdown-trigger {
+    padding: 14px 24px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  /* Disable hover-based dropdowns on mobile */
+  .nav-dropdown:hover .nav-dropdown-menu {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    transform: none !important;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0 0 8px 20px;
+    min-width: unset;
+    opacity: 1;
+    display: none;
+    pointer-events: none;
+  }
+
+  .nav-dropdown-menu::before {
+    display: none;
+  }
+
+  .nav-dropdown.is-open .nav-dropdown-menu {
+    display: block;
+    pointer-events: all;
+  }
+
+  .nav-dropdown.is-open .nav-dropdown-trigger::after {
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-menu li a {
+    padding: 10px 24px;
+    color: #5a6a8a;
+  }
+
+  .nav-cta {
+    display: block;
+    margin: 16px 20px 0;
+    text-align: center;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 36px 20px 52px;
+    min-height: 36vh;
+  }
+
+  .hero-logo {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 24px;
+  }
+
+  .hero-scroll-text {
+    font-size: 0.82rem;
+    letter-spacing: 1.2px;
+  }
+
+  /* BOOKS */
+  .books {
+    padding: 36px 0 56px;
+  }
+
+  .books h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .book-slide {
+    padding: 0 16px;
+  }
+
+  .book-card {
+    padding: 28px 20px;
+    gap: 18px;
+  }
+
+  .book-card-title {
+    font-size: 1.3rem;
+    letter-spacing: 1.2px;
+  }
+
+  .book-card-emblem img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .book-card-emblem--placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .book-card-desc {
+    left: 0;
+    text-align: center;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .book-card-meta {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .slider-arrow--next { right: 4px; }
+  .slider-arrow--prev { left: 4px; }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 20px 24px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* ── 480px and below ── */
+@media (max-width: 480px) {
+  .books h2 {
+    font-size: 1.75rem;
+  }
+
+  .book-card-title {
+    font-size: 1.15rem;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
