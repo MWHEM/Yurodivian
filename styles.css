@@ -232,8 +232,8 @@ nav {
   font-weight: 400;
   letter-spacing: 1.8px;
   text-transform: uppercase;
-  color: #977a34;
-  -webkit-text-stroke: 0.3px #977a34;
+  color: red;
+  -webkit-text-stroke: 0.3px red;
   margin: 0;
 }
 
