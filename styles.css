@@ -2689,10 +2689,6 @@ footer {
 
 /* ── 480px and below ── */
 @media (max-width: 480px) {
-  .books h2 {
-    font-size: 1.75rem;
-  }
-
   .book-card-title {
     font-size: 1.15rem;
   }
