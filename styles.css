@@ -1743,6 +1743,7 @@ footer {
 .contact-label {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.72rem;
+  line-height: 1.2;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #5a6a8a;
@@ -1751,6 +1752,7 @@ footer {
 .contact-input {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.92rem;
+  line-height: 1.5;
   color: #1a2040;
   background: #e4e7ef;
   border: 1px solid rgba(200, 184, 122, 0.2);
