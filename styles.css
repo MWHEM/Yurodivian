@@ -2737,6 +2737,76 @@ footer {
     gap: 12px;
   }
 
+  /* STORIES PAGE */
+  .stories-page .hero-wrapper {
+    min-height: unset;
+  }
+
+  .stories-hero {
+    padding: 16px 20px 32px;
+  }
+
+  .stories-title {
+    font-size: 2.2rem;
+    padding-top: 16px;
+  }
+
+  .stories-subtitle {
+    font-size: 0.88rem;
+    max-width: 100%;
+  }
+
+  .stories-content {
+    padding: 0 16px 60px;
+    top: -12px;
+  }
+
+  .stories-sort-bar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .stories-sort-bar .nav-cta {
+    position: static;
+    font-size: 0.82rem;
+    padding: 7px 18px;
+    order: -1;
+    flex: 1 0 100%;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .story-card {
+    padding: 22px 16px 22px;
+  }
+
+  .story-card-date {
+    position: static;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* SUBMIT STORY PAGE */
+  .contact-rules {
+    padding: 28px 20px 24px;
+  }
+
+  .ss-divider {
+    margin: 0 20px;
+  }
+
+  .ss-form-card {
+    padding: 28px 20px 36px;
+  }
+
+  .contact-submit {
+    align-self: stretch;
+    width: 100%;
+    text-align: center;
+  }
+
   /* POST / ARTICLE */
   .sh-article {
     padding: 28px 20px 36px;
