@@ -3173,6 +3173,13 @@ body.modal-open {
   opacity: 0.88;
 }
 
+.modal-submit--link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 8px;
+}
+
 .modal-sub--tight {
   margin-top: -12px;
 }
