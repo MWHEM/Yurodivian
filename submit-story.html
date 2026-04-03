@@ -112,6 +112,7 @@
             <div class="contact-field">
               <label class="contact-label" for="ss-email-confirm">Confirm Email</label>
               <input class="contact-input" type="email" id="ss-email-confirm" name="email_confirm" placeholder="Re-enter your email address" autocomplete="off" />
+              <p class="ss-field-error" id="ss-email-error" hidden>Emails do not match.</p>
             </div>
 
             <!-- Week selector -->
@@ -324,6 +325,20 @@
     pwInput.addEventListener('input', function () {
       if (!pwError.hidden) pwError.hidden = true;
     });
+
+    // Email confirmation check
+    const emailField = document.getElementById('ss-email');
+    const emailConfirm = document.getElementById('ss-email-confirm');
+    const emailError = document.getElementById('ss-email-error');
+
+    function checkEmailMatch() {
+      const mismatch = emailConfirm.value.length > 0 && emailField.value !== emailConfirm.value;
+      emailConfirm.classList.toggle('contact-input--error', mismatch);
+      emailError.hidden = !mismatch;
+    }
+
+    emailConfirm.addEventListener('input', checkEmailMatch);
+    emailField.addEventListener('input', checkEmailMatch);
 
     // Week selector — single select
     const weekBtns = document.querySelectorAll('.ss-pill--week');

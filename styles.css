@@ -1769,6 +1769,17 @@ footer {
   border-color: rgba(200, 184, 122, 0.5);
 }
 
+.contact-input--error {
+  border-color: rgba(220, 100, 80, 0.7) !important;
+}
+
+.ss-field-error {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  color: #e07a6a;
+  margin: 0;
+}
+
 .contact-textarea {
   line-height: 1.7;
 }
