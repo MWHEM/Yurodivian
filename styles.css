@@ -2762,23 +2762,14 @@ footer {
   }
 
   .stories-sort-bar {
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 20px;
     margin-top: 3px;
   }
 
   .stories-sort-bar .nav-cta {
-    position: static;
-    display: block;
-    font-size: 0.82rem;
-    padding: 7px 18px;
-    order: -1;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-    margin-bottom: 14px;
+    display: none;
   }
 
   .story-card {
