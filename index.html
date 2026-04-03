@@ -93,7 +93,7 @@
                 <div class="book-meta-item"><span class="meta-label">Pages</span><strong>152</strong></div>
               </div>
               <div class="book-card-actions">
-                <button class="book-btn-primary" id="download-trigger">Download Free</button>
+                <a href="#" class="book-btn-primary" id="download-trigger">Download Free</a>
               </div>
             </div>
           </div>
@@ -341,7 +341,7 @@
       trigger.focus();
     }
 
-    trigger.addEventListener('click', openModal);
+    trigger.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
     closeBtn.addEventListener('click', closeModal);
 
     // Close on backdrop click
