@@ -2763,9 +2763,10 @@ footer {
 
   .stories-sort-bar {
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 8px;
     margin-bottom: 20px;
+    margin-top: 3px;
   }
 
   .stories-sort-bar .nav-cta {
