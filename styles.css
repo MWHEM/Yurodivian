@@ -2524,6 +2524,9 @@ footer {
     padding: 14px 24px;
     justify-content: space-between;
     width: 100%;
+  }
+
+  .nav-links a {
     color: #c8d4e8;
     font-size: 0.95rem;
   }
@@ -2564,7 +2567,7 @@ footer {
 
   .nav-dropdown-menu li a {
     padding: 10px 24px;
-    color: #7a8aaa;
+    color: #7a8aaa !important;
     font-size: 0.88rem;
   }
 
