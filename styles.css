@@ -3017,6 +3017,10 @@ body.modal-open {
   overflow: hidden;
 }
 
+.modal-backdrop[hidden] {
+  display: none;
+}
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
