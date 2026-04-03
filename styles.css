@@ -2872,6 +2872,29 @@ footer {
     text-align: center;
   }
 
+  /* FAQ PAGE */
+  .faq-section-label {
+    font-size: 0.68rem;
+    margin: 28px 0 10px;
+  }
+
+  .faq-question {
+    padding: 18px 16px;
+    gap: 12px;
+  }
+
+  .faq-question-text {
+    font-size: 0.92rem;
+  }
+
+  .faq-item--open .faq-answer {
+    padding: 0 16px 20px;
+  }
+
+  .faq-answer p {
+    font-size: 0.87rem;
+  }
+
   /* RESOURCES PAGE */
   .resources-outer-card {
     padding: 28px 20px 32px;
