@@ -2741,6 +2741,41 @@ footer {
     gap: 12px;
   }
 
+  /* NEWSLETTER PAGE */
+  .newsletter-page .hero-wrapper {
+    min-height: unset;
+  }
+
+  .nl-hero {
+    padding: 24px 16px 48px;
+  }
+
+  .nl-hero-inner {
+    padding: 32px 20px 36px;
+  }
+
+  .nl-headline {
+    font-size: 1.9rem;
+  }
+
+  .nl-form {
+    flex-direction: column;
+    border: none;
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  .nl-input {
+    border-radius: 6px;
+    border: 1px solid rgba(180, 185, 200, 0.25);
+  }
+
+  .nl-submit {
+    border-radius: 6px;
+    padding: 14px;
+    text-align: center;
+  }
+
   /* MEETINGS PAGE */
   .meetings-page .hero-wrapper {
     min-height: unset;
