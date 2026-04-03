@@ -3011,3 +3011,19 @@ footer {
     gap: 28px;
   }
 }
+
+/* ── Desktop only: full-viewport homepage hero ── */
+@media (min-width: 769px) {
+  .home-page .hero-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-page .hero {
+    flex: 1;
+    min-height: unset;
+    justify-content: center;
+    padding: 0 24px;
+  }
+}
