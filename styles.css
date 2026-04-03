@@ -527,10 +527,9 @@ nav {
 
 .stories-content {
   max-width: 920px;
-  margin: 0 auto;
+  margin: -28px auto 0;
   padding: 0 24px 100px;
   position: relative;
-  top: -28px;
 }
 
 /* SORT BAR */
@@ -1052,10 +1051,9 @@ nav {
 
 .updates-content {
   max-width: 920px;
-  margin: 0 auto;
+  margin: -28px auto 0;
   padding: 0 24px 100px;
   position: relative;
-  top: -28px;
 }
 
 /* FEATURED POST */
