@@ -271,7 +271,7 @@
       pwError.hidden = true;
       pwModal.hidden = false;
       document.body.classList.add('modal-open');
-      requestAnimationFrame(() => pwInput.focus());
+      if (window.innerWidth > 768) requestAnimationFrame(() => pwInput.focus());
     }
 
     function closePwModal() {
