@@ -214,6 +214,27 @@
 
   </div>
 
+  <!-- PASSWORD MODAL -->
+  <div class="modal-backdrop" id="pw-modal" role="dialog" aria-modal="true" aria-labelledby="pw-modal-title" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="pw-modal-close" aria-label="Close">&times;</button>
+      <div class="modal-body" id="pw-modal-default">
+        <p class="modal-eyebrow">Verification Required</p>
+        <h2 class="modal-title" id="pw-modal-title">Enter Your Password</h2>
+        <p class="modal-sub" id="pw-modal-desc">To leave a testimonial at this stage, enter the password sent to your email at the <strong id="pw-modal-stage"></strong> mark.</p>
+        <p class="modal-sub modal-sub--tight">Your password is emailed to you automatically at each milestone after you download the book.</p>
+        <form class="modal-form" id="pw-modal-form" novalidate>
+          <div class="modal-field">
+            <label class="modal-label" for="pw-input">Password</label>
+            <input class="modal-input" type="password" id="pw-input" name="password" placeholder="Enter your password" autocomplete="off" />
+            <p class="modal-error" id="pw-modal-error" hidden>Incorrect password. Check the email sent to you at the <span id="pw-error-stage"></span> mark.</p>
+          </div>
+          <button type="submit" class="modal-submit">Verify &nbsp;&#8594;</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- CONFIRMATION MODAL -->
   <div class="ss-modal-overlay" id="ss-modal">
     <div class="ss-modal">
@@ -226,10 +247,89 @@
   </div>
 
   <script>
+    // Password modal
+    const pwModal = document.getElementById('pw-modal');
+    const pwClose = document.getElementById('pw-modal-close');
+    const pwForm = document.getElementById('pw-modal-form');
+    const pwInput = document.getElementById('pw-input');
+    const pwError = document.getElementById('pw-modal-error');
+    const pwStageLabel = document.getElementById('pw-modal-stage');
+    const pwErrorStage = document.getElementById('pw-error-stage');
+
+    const stageLabels = { '3months': '3 month', '6months': '6 month', '9months': '9 month' };
+    // TODO: validate password server-side — replace this with an API call
+    const stagePasswords = { '3months': null, '6months': null, '9months': null };
+
+    let pendingPill = null;
+
+    function openPwModal(pill) {
+      pendingPill = pill;
+      const stage = stageLabels[pill.dataset.val];
+      pwStageLabel.textContent = stage;
+      pwErrorStage.textContent = stage;
+      pwInput.value = '';
+      pwError.hidden = true;
+      pwModal.hidden = false;
+      document.body.classList.add('modal-open');
+      requestAnimationFrame(() => pwInput.focus());
+    }
+
+    function closePwModal() {
+      pwModal.hidden = true;
+      document.body.classList.remove('modal-open');
+      if (pendingPill) pendingPill.focus();
+      pendingPill = null;
+    }
+
+    pwClose.addEventListener('click', closePwModal);
+
+    pwModal.addEventListener('click', function (e) {
+      if (e.target === pwModal) closePwModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !pwModal.hidden) closePwModal();
+    });
+
+    // Focus trap
+    pwModal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(pwModal.querySelectorAll('button, input'));
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+      else            { if (document.activeElement === last)  { e.preventDefault(); first.focus(); } }
+    });
+
+    pwForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const entered = pwInput.value.trim();
+      if (!entered) { pwError.hidden = false; pwInput.focus(); return; }
+      const expected = stagePasswords[pendingPill.dataset.val];
+      // If no server password set yet, accept any non-empty entry
+      if (expected !== null && entered !== expected) {
+        pwError.hidden = false;
+        pwInput.select();
+        return;
+      }
+      // Password accepted — select the pill
+      weekBtns.forEach(b => b.classList.remove('ss-pill--active'));
+      pendingPill.classList.add('ss-pill--active');
+      closePwModal();
+    });
+
+    pwInput.addEventListener('input', function () {
+      if (!pwError.hidden) pwError.hidden = true;
+    });
+
     // Week selector — single select
     const weekBtns = document.querySelectorAll('.ss-pill--week');
     weekBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        // 3, 6, 9 months require password
+        if (['3months', '6months', '9months'].includes(btn.dataset.val)) {
+          openPwModal(btn);
+          return;
+        }
         weekBtns.forEach(b => b.classList.remove('ss-pill--active'));
         btn.classList.add('ss-pill--active');
       });

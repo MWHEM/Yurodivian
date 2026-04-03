@@ -3173,6 +3173,10 @@ body.modal-open {
   opacity: 0.88;
 }
 
+.modal-sub--tight {
+  margin-top: -12px;
+}
+
 .modal-note {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.75rem;
