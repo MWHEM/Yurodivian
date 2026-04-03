@@ -2552,6 +2552,11 @@ footer {
     pointer-events: none;
   }
 
+  .nav-dropdown.is-open .nav-dropdown-menu {
+    display: block !important;
+    pointer-events: all !important;
+  }
+
   .nav-dropdown-menu {
     position: static;
     transform: none !important;
