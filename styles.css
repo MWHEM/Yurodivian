@@ -2574,12 +2574,13 @@ footer {
   /* HERO */
   .hero {
     padding: 36px 20px 52px;
-    min-height: 36vh;
+    min-height: calc(100vh - 64px);
+    justify-content: center;
   }
 
   .hero-logo {
-    width: 160px;
-    height: 160px;
+    width: 200px;
+    height: 200px;
     margin-bottom: 24px;
   }
 
