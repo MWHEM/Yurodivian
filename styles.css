@@ -1775,13 +1775,6 @@ footer {
   border-color: rgba(220, 100, 80, 0.7) !important;
 }
 
-.ss-label-hint {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.72rem;
-  color: #8a9ab8;
-  margin: -4px 0 0;
-}
-
 .ss-field-error {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.78rem;
