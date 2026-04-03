@@ -252,6 +252,16 @@
   </div>
 
   <script>
+    // Prevent browser scroll-to-focus jitter on form inputs
+    document.querySelectorAll('.contact-input').forEach(function (input) {
+      input.addEventListener('focus', function () {
+        var y = window.scrollY;
+        requestAnimationFrame(function () { window.scrollTo(0, y); });
+      });
+    });
+  </script>
+
+  <script>
     // Password modal
     const pwModal = document.getElementById('pw-modal');
     const pwClose = document.getElementById('pw-modal-close');

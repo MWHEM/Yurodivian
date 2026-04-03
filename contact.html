@@ -182,6 +182,16 @@
   </div>
 
   <script>
+    // Prevent browser scroll-to-focus jitter on form inputs
+    document.querySelectorAll('.contact-input').forEach(function (input) {
+      input.addEventListener('focus', function () {
+        var y = window.scrollY;
+        requestAnimationFrame(function () { window.scrollTo(0, y); });
+      });
+    });
+  </script>
+
+  <script>
     const contactForm = document.getElementById('contact-form');
     const contactModal = document.getElementById('contact-modal');
     const contactModalClose = document.getElementById('contact-modal-close');
