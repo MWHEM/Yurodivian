@@ -2545,17 +2545,7 @@ footer {
     color: #c8b87a !important;
   }
 
-  /* Disable hover-based dropdowns on mobile */
-  .nav-dropdown:hover .nav-dropdown-menu {
-    display: none;
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .nav-dropdown.is-open .nav-dropdown-menu {
-    display: block !important;
-    pointer-events: all !important;
-  }
+  /* Dropdowns controlled by JS only on mobile — no hover */
 
   .nav-dropdown-menu {
     position: static;
