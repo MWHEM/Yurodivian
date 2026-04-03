@@ -332,8 +332,8 @@
       successView.hidden = true;
       emailInput.value = '';
       errorMsg.hidden = true;
-      // Focus first focusable element after a tick
-      requestAnimationFrame(() => emailInput.focus());
+      // Only auto-focus on desktop — on mobile it pops the keyboard immediately
+      if (window.innerWidth > 768) requestAnimationFrame(() => emailInput.focus());
     }
 
     function closeModal() {
