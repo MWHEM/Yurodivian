@@ -2770,10 +2770,12 @@ footer {
 
   .stories-sort-bar .nav-cta {
     position: static;
+    display: block;
     font-size: 0.82rem;
     padding: 7px 18px;
     order: -1;
-    flex: 1 0 100%;
+    width: 100%;
+    box-sizing: border-box;
     text-align: center;
     margin-bottom: 4px;
   }
