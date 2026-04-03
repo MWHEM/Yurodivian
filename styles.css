@@ -2741,6 +2741,21 @@ footer {
     gap: 12px;
   }
 
+  /* MEETINGS PAGE */
+  .meetings-page .hero-wrapper {
+    min-height: unset;
+  }
+
+  .meetings-page .update-featured {
+    padding: 28px 20px 32px;
+  }
+
+  /* MEETINGS POST */
+  .meetings-page .sh-section,
+  .start-here-page .sh-section {
+    padding: 20px 0;
+  }
+
   /* STORIES PAGE */
   .stories-page .hero-wrapper {
     min-height: unset;
