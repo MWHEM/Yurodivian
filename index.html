@@ -93,7 +93,7 @@
                 <div class="book-meta-item"><span class="meta-label">Pages</span><strong>152</strong></div>
               </div>
               <div class="book-card-actions">
-                <a href="#" class="book-btn-primary">Download Free</a>
+                <button class="book-btn-primary" id="download-trigger">Download Free</button>
               </div>
             </div>
           </div>
@@ -192,6 +192,34 @@
     </div>
   </footer>
 
+  <!-- DOWNLOAD MODAL -->
+  <div class="modal-backdrop" id="download-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <!-- Default state -->
+      <div class="modal-body" id="modal-default">
+        <p class="modal-eyebrow">Soul Path &mdash; Volume 1</p>
+        <h2 class="modal-title" id="modal-title">Soul Embodiment</h2>
+        <p class="modal-sub">Enter your email and we'll send the book straight to your inbox. Free, no strings.</p>
+        <form class="modal-form" id="modal-form" novalidate>
+          <div class="modal-field">
+            <label class="modal-label" for="modal-email">Email address</label>
+            <input class="modal-input" type="email" id="modal-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            <p class="modal-error" id="modal-error" hidden>Please enter a valid email address.</p>
+          </div>
+          <button type="submit" class="modal-submit">Send me the book &nbsp;&#8594;</button>
+        </form>
+        <p class="modal-note">No spam. Unsubscribe any time.</p>
+      </div>
+      <!-- Success state -->
+      <div class="modal-body modal-success" id="modal-success" hidden>
+        <div class="modal-success-icon">&#10003;</div>
+        <h2 class="modal-title">It's on its way.</h2>
+        <p class="modal-sub">Check your inbox — Soul Embodiment will arrive shortly.</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Mobile nav
     const hamburger = document.getElementById('nav-hamburger');
@@ -282,6 +310,83 @@
     });
   </script>
 
+  <script>
+    // Download modal
+    const modal = document.getElementById('download-modal');
+    const trigger = document.getElementById('download-trigger');
+    const closeBtn = document.getElementById('modal-close');
+    const form = document.getElementById('modal-form');
+    const emailInput = document.getElementById('modal-email');
+    const errorMsg = document.getElementById('modal-error');
+    const defaultView = document.getElementById('modal-default');
+    const successView = document.getElementById('modal-success');
 
+    const focusableSelectors = 'button, input, [tabindex]:not([tabindex="-1"])';
+
+    function openModal() {
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+      // Reset to default state
+      defaultView.hidden = false;
+      successView.hidden = true;
+      emailInput.value = '';
+      errorMsg.hidden = true;
+      // Focus first focusable element after a tick
+      requestAnimationFrame(() => emailInput.focus());
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.classList.remove('modal-open');
+      trigger.focus();
+    }
+
+    trigger.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close on backdrop click
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    // Focus trap
+    modal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      const focusable = Array.from(modal.querySelectorAll(focusableSelectors));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // Form submit
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if (!valid) {
+        errorMsg.hidden = false;
+        emailInput.focus();
+        return;
+      }
+      errorMsg.hidden = true;
+      // TODO: wire up to email delivery service
+      defaultView.hidden = true;
+      successView.hidden = false;
+      closeBtn.focus();
+    });
+
+    emailInput.addEventListener('input', function () {
+      if (!errorMsg.hidden) errorMsg.hidden = true;
+    });
+  </script>
 </body>
 </html>
