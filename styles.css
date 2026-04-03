@@ -2872,6 +2872,24 @@ footer {
     text-align: center;
   }
 
+  /* CONTACT PAGE */
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout::after {
+    display: none;
+  }
+
+  .contact-page .contact-rules {
+    padding: 28px 20px 24px;
+    border-bottom: 1px solid rgba(200, 184, 122, 0.12);
+  }
+
+  .contact-form-card {
+    padding: 28px 20px 36px;
+  }
+
   /* FAQ PAGE */
   .faq-section-label {
     font-size: 0.68rem;
